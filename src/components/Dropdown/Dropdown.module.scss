@@ -1,0 +1,48 @@
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  font-size: 16px;
+  color: #808191;
+}
+
+.dropdown-menu {
+  display: inline-block;
+  width: 100%;
+  max-height: 400px;
+  background-color: white;
+  box-shadow: 0 0px 7px #ccc;
+}
+
+.dropdown-item {
+  padding: 16px 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgb(241, 251, 247);
+  }
+}
+
+.category {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: transparent;
+  border: 1px solid rgb(241, 241, 243);
+  border-radius: 8px;
+  transition: all 0.2s linear 0s;
+  color: rgb(23, 23, 37);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  font-size: 16px;
+  color: #808191;
+}

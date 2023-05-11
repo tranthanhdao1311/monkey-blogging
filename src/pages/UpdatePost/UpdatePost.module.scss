@@ -1,0 +1,57 @@
+.form-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.input {
+  display: grid;
+  gap: 10px;
+}
+
+// radio
+.box-radio {
+  display: flex;
+  gap: 20px;
+}
+
+// btn add post
+
+.wrapper-btn-add {
+  display: flex;
+  justify-content: center;
+}
+.btn-add-post {
+  width: 250px;
+  height: 66px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.dropdown-item {
+  padding: 16px 20px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgb(241, 251, 247);
+  }
+}
+
+.form-content {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.toggle-hide {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}

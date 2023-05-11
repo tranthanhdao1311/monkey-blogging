@@ -1,0 +1,28 @@
+// pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.pagination-list {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.pagination-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+}
+
+.pagination-item.active {
+  background-color: var(--color-primary);
+  color: white;
+}

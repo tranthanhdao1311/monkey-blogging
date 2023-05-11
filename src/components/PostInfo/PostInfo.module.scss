@@ -1,0 +1,19 @@
+.author,
+.date {
+  font-size: 14px;
+}
+
+.date-author {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  margin: 0 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: white;
+  list-style-type: circle;
+}

@@ -1,0 +1,25 @@
+.wrapper {
+  min-height: 100vh;
+  padding: 40px;
+}
+.container {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+
+  img {
+    width: 121px;
+    height: 156px;
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  margin-bottom: 60px;
+  font-size: 40px;
+  color: var(--color-primary);
+  text-align: center;
+}

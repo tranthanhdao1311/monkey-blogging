@@ -1,0 +1,30 @@
+.icon {
+  max-width: 25px;
+}
+
+.sidebar-list {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #808191;
+}
+
+.item-sidebar {
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: rgb(241, 251, 247);
+    color: rgb(29, 192, 113);
+  }
+}
+
+.item-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  cursor: pointer;
+}
+.active {
+  color: rgb(29, 192, 113);
+}

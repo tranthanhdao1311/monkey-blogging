@@ -1,0 +1,20 @@
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.border-title {
+  width: 50px;
+  display: inline-block;
+  height: 5px;
+  background-color: aqua;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 20px;
+  gap: 20px;
+}

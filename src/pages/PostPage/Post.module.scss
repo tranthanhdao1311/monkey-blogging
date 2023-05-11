@@ -1,0 +1,150 @@
+.title {
+  font-size: 25px;
+  color: #171725;
+  margin-bottom: 5px;
+}
+.desc-title {
+  color: #808191;
+  font-size: 14px;
+}
+
+.table-posts {
+  overflow-x: auto;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+  }
+  thead {
+    background-color: rgb(247, 247, 248);
+  }
+  th {
+    padding: 20px 30px;
+    font-weight: 600;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  td {
+    padding: 15px 30px;
+  }
+}
+
+.post-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  img {
+    width: 66px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.info-post {
+  min-width: 420px;
+
+  .post-title {
+    font-size: 16px;
+    color: #232323;
+    font-weight: 600;
+  }
+
+  time {
+    color: #6b7280;
+    font-size: 14px;
+  }
+}
+
+.btn-status {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #22c55e;
+  background-color: #dcfce7;
+}
+.actions {
+  display: flex;
+  gap: 15px;
+  .span-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    color: #6b7280;
+    cursor: pointer;
+  }
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+.btn-load-more {
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  background-color: var(--color-primary);
+}
+.info-pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 40px 0;
+}
+
+.box-dropdown-search {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+}
+
+.dropdown-w {
+  width: 200px;
+}
+.list {
+  width: 200px;
+  position: absolute;
+}
+
+.no-results {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: rgb(241, 251, 247);
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+// trash-post {
+.trash-post {
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  background-color: #cc0000;
+}
+
+.icon-trash {
+  margin-right: 10px;
+}

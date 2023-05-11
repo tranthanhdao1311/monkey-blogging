@@ -1,0 +1,90 @@
+.wrapper {
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.container {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+
+  img {
+    width: 121px;
+    height: 156px;
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  margin-bottom: 60px;
+  font-size: 40px;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.form-sign-up {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 10px;
+  margin-bottom: 25px;
+
+  .label {
+    color: rgb(75, 82, 100);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+.have-account {
+  display: flex;
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.icon-eye {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #dac4bd;
+  cursor: pointer;
+}
+
+// bg-color
+.bg-color-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-color-black {
+  background-color: black;
+}
+
+.size-btn {
+  width: 300px;
+  height: 66px;
+}
+
+.btn-submit {
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+.table-posts {
+  overflow-x: auto;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+  }
+  thead {
+    background-color: rgb(247, 247, 248);
+  }
+  th {
+    padding: 20px 30px;
+    font-weight: 600;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  td {
+    padding: 15px 30px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.post-title {
+  font-size: 16px;
+  font-weight: 500;
+}

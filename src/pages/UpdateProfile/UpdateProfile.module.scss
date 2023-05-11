@@ -1,0 +1,49 @@
+.image-upload {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin-bottom: 60px;
+}
+.form-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+.input {
+  display: grid;
+  gap: 10px;
+}
+
+.box-radio {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-add-user {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 200px;
+  height: 66px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--color-primary);
+}
+.text-area {
+  min-width: 100%;
+  min-height: 150px;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid rgb(241, 241, 243);
+  outline: none;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-family: "Epilogue", sans-serif;
+}

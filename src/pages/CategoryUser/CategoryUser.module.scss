@@ -1,0 +1,162 @@
+.container {
+  width: 1220px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.header-cate {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.name {
+  color: #4f4f4f;
+}
+
+.cate-list {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.cate-item {
+  font-size: 14px;
+  font-weight: 700;
+  color: #626262;
+}
+.content {
+  margin: 20px 0;
+}
+
+.post-list-first {
+  width: 70%;
+  height: 100%;
+  position: relative;
+  background-color: black;
+}
+
+.first-img-link {
+  width: 100%;
+  display: block;
+}
+
+.first-img {
+  width: 100%;
+}
+
+.first-img-link::after {
+  content: "";
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  background: linear-gradient(180deg, transparent 0%, #000 100.24%);
+}
+
+.first-info-title {
+  position: absolute;
+  bottom: 64px;
+  width: 100%;
+  color: white;
+  padding: 20px;
+}
+
+.first-info-desc {
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.content-top {
+  display: flex;
+  gap: 20px;
+}
+
+.post-list-nav {
+  width: 30%;
+}
+
+.nav-link {
+  width: 100%;
+  height: 70%;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(180deg, transparent 0%, #000 100.24%);
+}
+
+.nav-item {
+  position: relative;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 20px;
+}
+.nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-img {
+  width: 100%;
+  height: 198px;
+  object-fit: cover;
+}
+
+.nav-item-desc {
+  height: 30%;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  margin: 10px 15px;
+  overflow: hidden;
+
+  font-size: 14px;
+  color: #4f4f4f;
+}
+
+.nav-title {
+  position: absolute;
+  bottom: 0px;
+  padding: 13px;
+  left: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  z-index: 9999;
+}
+
+.order-list {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.order-item {
+  width: calc(25% - 15px);
+  margin-bottom: 15px;
+}
+
+.order-item-img-link {
+  width: 100%;
+}
+.order-item-img {
+  width: 100%;
+  height: 156px;
+  object-fit: cover;
+}
+
+.order-item-title-link {
+  font-size: 15px;
+  color: #232323;
+  font-weight: 600;
+}

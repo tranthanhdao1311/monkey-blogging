@@ -1,0 +1,43 @@
+.entry-content {
+  font-size: 16px;
+  font-family: "Epilogue", sans-serif;
+
+  p {
+    line-height: 2;
+    margin-bottom: 20px !important;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: bold;
+    margin-bottom: 20px !important;
+  }
+  h1 {
+    font-size: 38px !important;
+  }
+
+  .ql-snow .ql-editor h2 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 26px !important;
+  }
+}
+
+.entry-content .quill {
+  position: relative;
+  .ql-toolbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+  }
+}

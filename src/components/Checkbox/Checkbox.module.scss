@@ -1,0 +1,39 @@
+//check box
+.custom-checkbox {
+  width: 70px;
+  height: 42px;
+  background-color: #d1d5db;
+  border-radius: 30px;
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.2s all linear;
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 30px;
+  transition: 0.2s all linear;
+}
+
+.custom-checkbox.active {
+  background-color: var(--color-primary);
+}
+
+.spinner.active {
+  transform: translateX(28px);
+}

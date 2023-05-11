@@ -1,0 +1,32 @@
+.label-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #22c55e;
+  background-color: #dcfce7;
+  border-radius: 10px;
+}
+
+.default {
+  background-color: #d7dadd;
+  color: black;
+}
+
+.success {
+  background-color: #dcfce7;
+  color: var(--color-primary);
+}
+
+.warning {
+  background-color: #e6bc15;
+  color: white;
+}
+
+.danger {
+  background-color: #d72503;
+  color: white;
+}

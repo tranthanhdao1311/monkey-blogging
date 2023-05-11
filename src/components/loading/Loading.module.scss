@@ -1,0 +1,28 @@
+.loading {
+  border-radius: 50%;
+  border: 3px solid white;
+  border-top-color: transparent;
+  margin: 0 auto;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+// size loading
+.size-small {
+  width: 20px;
+  height: 20px;
+}
+
+.size-medium {
+  width: 25px;
+  height: 25px;
+}
+
+.size-big {
+  width: 30px;
+  height: 30px;
+}
