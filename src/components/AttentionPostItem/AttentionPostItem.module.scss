@@ -55,3 +55,12 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+@media (max-width: 414px) {
+  .post-item {
+    display: block;
+    max-height: none;
+  }
+  .img {
+    width: 100%;
+  }
+}

@@ -142,18 +142,20 @@ const Footer = () => {
         <div className={"content-middle-right"}>
           <div className={cx("middle-flex")}>
             <p>Theo dõi MonkeyBlogging trên</p>
-            <FontAwesomeIcon
-              className={cx("icon-social", "fb")}
-              icon={faFacebookF}
-            ></FontAwesomeIcon>
-            <FontAwesomeIcon
-              className={cx("icon-social", "twitter")}
-              icon={faTwitter}
-            ></FontAwesomeIcon>
-            <FontAwesomeIcon
-              className={cx("icon-social", "youtube")}
-              icon={faYoutube}
-            ></FontAwesomeIcon>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <FontAwesomeIcon
+                className={cx("icon-social", "fb")}
+                icon={faFacebookF}
+              ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                className={cx("icon-social", "twitter")}
+                icon={faTwitter}
+              ></FontAwesomeIcon>
+              <FontAwesomeIcon
+                className={cx("icon-social", "youtube")}
+                icon={faYoutube}
+              ></FontAwesomeIcon>
+            </div>
           </div>
         </div>
       </div>

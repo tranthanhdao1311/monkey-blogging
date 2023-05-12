@@ -14,6 +14,8 @@ import { useAuth } from "../../../context/auth-context";
 import { auth, db } from "../../../firebase/firebase-config";
 import { signOut } from "firebase/auth";
 import HeadLessTippy from "@tippyjs/react/headless";
+// import HeadLessTippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 import {
   collection,
@@ -205,17 +207,18 @@ const Header = () => {
                         <HeadLessTippy
                           delay={[0, 0]}
                           placement="bottom-start"
+                          offset={[14, 10]}
                           interactive
-                          visible={
-                            item.id === id && menuCate && menuCate.length > 0
-                          }
+                          // visible
+                          // hideOnClick={item.id === id}
                           render={(attrs) => (
                             <ul
                               className={cx("menu-list-cate")}
                               tabIndex="-1"
                               {...attrs}
                             >
-                              {menuCate.length > 0 &&
+                              {item.id === id &&
+                                menuCate.length > 0 &&
                                 // eslint-disable-next-line array-callback-return
                                 menuCate.map(
                                   (itemChildren) =>

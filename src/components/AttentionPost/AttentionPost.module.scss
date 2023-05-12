@@ -30,3 +30,15 @@
   padding: 0 25px;
   margin-top: 85px;
 }
+
+@media (max-width: 768px) {
+  .advertisement {
+    display: none;
+  }
+
+  .attention-post {
+    width: 100%;
+  }
+}
+@media (max-width: 414px) {
+}

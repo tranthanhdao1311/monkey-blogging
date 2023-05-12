@@ -1,6 +1,7 @@
 .container {
-  width: 1220px;
+  max-width: 1220px;
   margin: 0 auto;
+  padding: 0 20px;
   border-top: 5px solid #ebebeb;
   padding-bottom: 30px;
 }
@@ -153,4 +154,40 @@
   color: #232323;
   font-size: 14px;
   line-height: 24px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .info-hotline {
+    display: block;
+  }
+  .content-top {
+    gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-top {
+    display: block;
+    gap: 0;
+  }
+  .category {
+    width: 100%;
+  }
+  .info-web {
+    width: 100%;
+    padding-left: 0;
+    border-left: 0;
+  }
+  .middle-flex {
+    display: block;
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .content-bot {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

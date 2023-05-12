@@ -99,3 +99,20 @@
 .post-info-style {
   margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+  .content {
+    display: block;
+  }
+  .left {
+    max-width: 100%;
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+
+  .right {
+    width: 100%;
+    margin-left: 0;
+    max-height: none;
+  }
+}

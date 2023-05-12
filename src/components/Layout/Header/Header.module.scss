@@ -97,6 +97,7 @@
 
 .menu-list-cate {
   width: 200px;
+  min-height: 140px;
   max-height: 300px;
   overflow: hidden;
   position: absolute;
@@ -233,4 +234,7 @@
 
 .active {
   color: var(--color-primary);
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
 }
