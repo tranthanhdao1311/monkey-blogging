@@ -73,3 +73,19 @@
 .swipper-slide-custom {
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .info {
+    bottom: 22px;
+    left: -22px;
+  }
+  .banner {
+    max-height: 250px;
+  }
+  .img {
+    height: 250px;
+  }
+  .tilte {
+    font-size: 14px;
+  }
+}

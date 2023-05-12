@@ -1,5 +1,5 @@
 .container {
-  width: 1220px;
+  max-width: 1220px;
   margin: 0 auto;
   padding-top: 20px;
 }
@@ -159,4 +159,10 @@
   font-size: 15px;
   color: #232323;
   font-weight: 600;
+}
+
+@media (max-width: 1220px) {
+  .container {
+    padding: 20px;
+  }
 }

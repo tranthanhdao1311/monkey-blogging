@@ -261,7 +261,12 @@ const DetailsPostPage = () => {
                         ></FontAwesomeIcon>
                         <span>Thích</span>
                       </div>
-                      <p onClick={() => handleRepComment(item)}>Trả lời</p>
+                      <p
+                        style={{ whiteSpace: "nowrap" }}
+                        onClick={() => handleRepComment(item)}
+                      >
+                        Trả lời
+                      </p>
 
                       <p>{formatTimeCmt + " " + formatDateCmt}</p>
                     </div>

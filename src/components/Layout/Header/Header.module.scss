@@ -52,14 +52,13 @@
   border: 1px solid #ccc;
   margin-right: 20px;
   border-radius: 10px;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 
   input {
     width: 250px;
-    padding: 15px;
+    padding: 5px 15px;
     border: none;
     outline: none;
   }
@@ -236,5 +235,46 @@
   color: var(--color-primary);
 }
 
+.logout {
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+
+  .logo img {
+    max-width: 35px;
+  }
+
+  .menu-left {
+    margin-right: 20px;
+  }
+
+  .search {
+    input {
+      width: 140px;
+      padding: 5px 15px;
+    }
+  }
+
+  .user {
+    strong {
+      font-size: 14px;
+    }
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .box-ul {
+    display: none;
+  }
+
+  .container-cate {
+    padding: 10px 20px;
+  }
 }

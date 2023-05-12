@@ -163,9 +163,8 @@ const Header = () => {
                       delay={[0, 800]}
                       offset={[14, 10]}
                       interactive
-                      placement="bottom-end"
                       render={(attrs) => (
-                        <div tabIndex="-1" {...attrs}>
+                        <div tabIndex="-1" {...attrs} className="logout">
                           <div onClick={() => handleLogout()}>Đăng xuất</div>
                         </div>
                       )}

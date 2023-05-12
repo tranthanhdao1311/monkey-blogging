@@ -175,6 +175,7 @@
 }
 .like-cmt {
   cursor: pointer;
+  white-space: nowrap;
 }
 .like-cmt-icon {
   margin-right: 7px;
@@ -196,4 +197,17 @@
   object-fit: cover;
   padding: 0 25px;
   margin-top: 45px;
+}
+
+@media (max-width: 768px) {
+  .post-header {
+    flex-direction: column;
+  }
+  .advertisement {
+    display: none;
+  }
+
+  .form-cmt {
+    width: 100%;
+  }
 }
