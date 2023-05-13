@@ -8,6 +8,7 @@ import {
   faBars,
   faHome,
   faMagnifyingGlass,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../button/Button";
 import { useAuth } from "../../../context/auth-context";
@@ -145,18 +146,28 @@ const Header = () => {
                   ></FontAwesomeIcon>
                 </div>
                 {!userInfo ? (
-                  <Link to="/sign-in">
-                    <Button
-                      type="button"
-                      className={cx(
-                        "btn-sign-up",
-                        "bg-color-primary",
-                        "size-btn"
-                      )}
-                    >
-                      Đăng nhập
-                    </Button>
-                  </Link>
+                  <>
+                    <Link to="/sign-in">
+                      <Button
+                        type="button"
+                        className={cx(
+                          "btn-sign-up",
+                          "bg-color-primary",
+                          "size-btn"
+                        )}
+                      >
+                        Đăng nhập
+                      </Button>
+                    </Link>
+                    <Link to="/sign-in">
+                      <Button
+                        type="button"
+                        className={cx("btn-sign-up-mobile", "bg-color-primary")}
+                      >
+                        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+                      </Button>
+                    </Link>
+                  </>
                 ) : (
                   <>
                     <HeadLessTippy

@@ -249,6 +249,10 @@
 .logout {
 }
 
+.btn-sign-up-mobile {
+  display: none;
+}
+
 @media (min-width: 769px) and (max-width: 1024px) {
 }
 
@@ -280,9 +284,26 @@
       font-size: 14px;
     }
   }
+  .btn-sign-up-mobile {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 50%;
+  }
+  .btn-sign-up {
+    display: none;
+  }
 }
+
 @media (max-width: 500px) {
   .size-btn {
     font-size: 14px;
+  }
+  .header-main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .header-category {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
