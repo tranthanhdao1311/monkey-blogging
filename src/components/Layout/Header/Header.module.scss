@@ -195,6 +195,12 @@
   overflow: hidden;
   overflow-x: auto;
 }
+
+/* Tùy chỉnh giao diện thanh cuộn trên Chrome và Safari */
+.box-ul::-webkit-scrollbar {
+  height: 0;
+}
+
 .cate-list {
   display: flex;
   justify-content: left;
@@ -273,13 +279,5 @@
     span {
       font-size: 14px;
     }
-  }
-
-  .box-ul {
-    display: none;
-  }
-
-  .container-cate {
-    padding: 10px 20px;
   }
 }
