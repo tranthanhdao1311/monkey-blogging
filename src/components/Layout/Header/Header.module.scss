@@ -193,10 +193,11 @@
 .box-ul {
   padding: 0 6px;
   overflow: hidden;
+  overflow-x: auto;
 }
 .cate-list {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 20px;
 }
