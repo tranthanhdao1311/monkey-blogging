@@ -1,9 +1,8 @@
 .wrapper {
-  min-height: 100vh;
   padding: 40px;
 }
 .container {
-  width: 1250px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
@@ -22,4 +21,11 @@
   font-size: 40px;
   color: var(--color-primary);
   text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: 30px;
+  }
 }

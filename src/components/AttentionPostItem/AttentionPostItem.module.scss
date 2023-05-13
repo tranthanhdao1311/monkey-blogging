@@ -55,12 +55,13 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
-@media (max-width: 414px) {
+@media (max-width: 500px) {
   .post-item {
-    display: block;
+    flex-direction: column;
     max-height: none;
   }
   .img {
     width: 100%;
+    height: auto;
   }
 }

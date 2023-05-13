@@ -1,7 +1,9 @@
 .container {
-  width: 1220px;
+  max-width: 1220px;
   margin: 0 auto;
   padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .content {
@@ -13,6 +15,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  white-space: nowrap;
 }
 
 .name {
@@ -23,6 +26,12 @@
   display: flex;
   list-style: none;
   gap: 15px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.cate-list::-webkit-scrollbar {
+  height: 0;
 }
 
 .cate-item {
@@ -133,4 +142,41 @@
 }
 .post-order-title:last-child {
   border: none;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .post-list {
+    border-right: none;
+    padding-right: 0;
+
+    width: 100%;
+  }
+  .post-list-nav {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .first-item {
+    flex-direction: column;
+  }
+
+  .image-link {
+    width: 100%;
+  }
+
+  .first-item-img {
+    width: 100%;
+  }
+
+  .info {
+    width: 100%;
+    padding-right: 0;
+    padding: 20px;
+    padding-top: 0;
+  }
 }
