@@ -43,7 +43,6 @@ time {
   border-radius: 5px;
 }
 .table-mobile {
-  display: none;
   max-width: 100%;
   height: auto;
   box-shadow: 0px 0px 4px #ccc;
@@ -90,6 +89,12 @@ time {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
+}
+
+@media (min-width: 769px) {
+  .table-mobile {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

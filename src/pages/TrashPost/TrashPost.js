@@ -13,15 +13,7 @@ import {
 import { db } from "../../firebase/firebase-config";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
-import Button from "../../button/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Dropdown } from "../../components/Dropdown";
-import SearchManage from "../../components/SearchManage/SearchManage";
-import PostItem, { SkeletonPost } from "../../components/PostItem/PostItem";
-import ActionView from "../../components/Action/ActionView";
-import ActionEdit from "../../components/Action/ActionEdit";
+import { useNavigate } from "react-router-dom";
 import ActionDelete from "../../components/Action/ActionDelete";
 import ActionRestore from "../../components/Action/ActionRestore";
 import { statusAddPost } from "../../configStatus";
@@ -31,8 +23,6 @@ import Swal from "sweetalert2";
 const cx = classNames.bind(styles);
 const TrashPost = () => {
   const [trashPost, setTrashPost] = useState([]);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const colRef = collection(db, "posttrash");
@@ -154,9 +144,6 @@ const TrashPost = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {trashPost.length <= 0 && trashPost <= 0 && (
-                <SkeletonPost></SkeletonPost>
-              )} */}
             {trashPost.length > 0 &&
               trashPost.map((item) => (
                 <tr key={item.id}>
@@ -213,6 +200,65 @@ const TrashPost = () => {
               )} */}
           </tbody>
         </table>
+      </div>
+      <div className={cx("table-posts-mobile")}>
+        {trashPost.length > 0 &&
+          trashPost.map((post) => (
+            <div className={cx("posts-mobile")}>
+              <div className={cx("posts-mobile-top")}>
+                <span>{post.id}</span>
+              </div>
+              <div className={cx("posts-mobile-middle")}>
+                <img
+                  className={cx("posts-mobile-middle-img")}
+                  src={post.image}
+                  alt=""
+                />
+                <p className={cx("posts-mobile-middle-title")}>{post.title}</p>
+              </div>
+              <div className={cx("posts-mobile-bot")}>
+                <table className={cx("posts-mobile-bot-table")}>
+                  <tr className={cx("posts-mobile-bot-table-tr")}>
+                    <td style={{ fontWeight: "600" }}>Danh mục</td>
+                    <td style={{ color: "#6b7280" }}>{post?.category?.name}</td>
+                  </tr>
+                  <tr className={cx("posts-mobile-bot-table-tr")}>
+                    <td style={{ fontWeight: "600" }}>Tác giả</td>
+                    <td style={{ color: "#6b7280" }}>{post?.user?.email}</td>
+                  </tr>
+                  <tr className={cx("posts-mobile-bot-table-tr")}>
+                    <td style={{ fontWeight: "600" }}>Trạng thái</td>
+                    <td>
+                      {post.status === statusAddPost.APPROVED && (
+                        <LabelStatus type="success">Đã duyệt</LabelStatus>
+                      )}
+                      {post.status === statusAddPost.PENDING && (
+                        <LabelStatus type="warning">Đang duyệt</LabelStatus>
+                      )}
+                      {post.status === statusAddPost.REJECT && (
+                        <LabelStatus type="danger">Từ chối</LabelStatus>
+                      )}
+                    </td>
+                  </tr>
+                  <tr className={cx("posts-mobile-bot-table-tr")}>
+                    <td style={{ fontWeight: "600" }}>Hành động</td>
+                    <td>
+                      <div className={cx("actions")}>
+                        <div className={cx("actions")}>
+                          <ActionRestore
+                            onClick={() => handleRestore(post)}
+                          ></ActionRestore>
+                          <ActionDelete
+                            onClick={() => handleDelete(post)}
+                          ></ActionDelete>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          ))}
       </div>
       {/* {currentItem > 0 && (
           <div className={cx("info-pagination")}>
