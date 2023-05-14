@@ -208,6 +208,20 @@ const Post = () => {
           </tbody>
         </table>
       </div>
+
+      <div className={cx("table-posts-mobile")}>
+        {posts.length > 0 &&
+          posts.map((post) => <PostItem data={post} key={post.id}></PostItem>)}
+      </div>
+
+      {/* <div className={cx("table-posts-mobile")}>
+        {posts.length > 0 &&
+          posts.map((item) => (
+            <div className={cx("id-created")}>
+              <span>{item.id}</span>
+            </div>
+          ))}
+      </div> */}
       {currentItem > 0 && (
         <div className={cx("info-pagination")}>
           {currentItem} trên {total} danh mục

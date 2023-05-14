@@ -22,10 +22,11 @@
 .sidebar-mobile {
   display: none;
   position: absolute;
+  left: 0;
+  right: 0;
   background-color: white;
   z-index: 1000;
-  width: 100%;
-  padding-right: 20px;
+  padding: 0 20px;
 }
 @media (max-width: 768px) {
   .sidebar {
@@ -33,8 +34,18 @@
   }
   .sidebar-mobile {
     display: block;
+    animation: sidebarShow 0.2s ease-in-out;
   }
   .dashboard-main {
     display: block;
+  }
+}
+
+@keyframes sidebarShow {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0);
   }
 }

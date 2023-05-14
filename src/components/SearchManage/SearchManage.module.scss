@@ -13,3 +13,14 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 768px) {
+  .search {
+    display: block;
+  }
+  .input-search {
+    input {
+      width: 100%;
+    }
+  }
+}

@@ -63,7 +63,7 @@ const PostItem = ({ data }) => {
   const formatDate = new Date(date).toLocaleDateString("vi-VI");
   return (
     <>
-      <tr key={data.id}>
+      <tr className={cx("table-desktop")} key={data.id}>
         <td
           style={{
             fontSize: "16px",
@@ -119,6 +119,64 @@ const PostItem = ({ data }) => {
           </div>
         </td>
       </tr>
+      <div className={cx("posts-mobile")}>
+        <div className={cx("posts-mobile-top")}>
+          <span>{data.id}</span>
+          <span>{time + ", " + formatDate}</span>
+        </div>
+        <div className={cx("posts-mobile-middle")}>
+          <img
+            className={cx("posts-mobile-middle-img")}
+            src={data.image}
+            alt=""
+          />
+          <p className={cx("posts-mobile-middle-title")}>{data.title}</p>
+        </div>
+        <div className={cx("posts-mobile-bot")}>
+          <table className={cx("posts-mobile-bot-table")}>
+            <tr className={cx("posts-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Danh mục</td>
+              <td style={{ color: "#6b7280" }}>{data?.category?.name}</td>
+            </tr>
+            <tr className={cx("posts-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Tác giả</td>
+              <td style={{ color: "#6b7280" }}>{data?.user?.email}</td>
+            </tr>
+            <tr className={cx("posts-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Trạng thái</td>
+              <td>
+                {data.status === statusAddPost.APPROVED && (
+                  <LabelStatus type="success">Đã duyệt</LabelStatus>
+                )}
+                {data.status === statusAddPost.PENDING && (
+                  <LabelStatus type="warning">Đang duyệt</LabelStatus>
+                )}
+                {data.status === statusAddPost.REJECT && (
+                  <LabelStatus type="danger">Từ chối</LabelStatus>
+                )}
+              </td>
+            </tr>
+            <tr className={cx("posts-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Hành động</td>
+              <td>
+                <div className={cx("actions")}>
+                  <ActionView
+                    onClick={() => {
+                      navigate(`/${data.id}`);
+                    }}
+                  ></ActionView>
+                  <ActionEdit
+                    onClick={() => {
+                      handleEditPost(data.id);
+                    }}
+                  ></ActionEdit>
+                  <ActionDelete onClick={handleDelete}></ActionDelete>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </>
   );
 };

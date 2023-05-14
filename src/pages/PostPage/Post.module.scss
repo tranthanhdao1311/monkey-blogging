@@ -148,3 +148,33 @@
 .icon-trash {
   margin-right: 10px;
 }
+
+.table-posts-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    span {
+      display: none;
+    }
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .box-dropdown-search {
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 15px;
+  }
+
+  .table-posts {
+    display: none;
+  }
+
+  .table-posts-mobile {
+    display: block;
+  }
+}
