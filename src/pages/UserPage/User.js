@@ -123,6 +123,12 @@ const User = () => {
           </tbody>
         </table>
       </div>
+
+      <div className={cx("table-posts-mobile")}>
+        {users.map((user) => (
+          <UserItem data={user} key={user.id}></UserItem>
+        ))}
+      </div>
       <div className={cx("info-pagination")}>
         {currentItem} trên {total} danh mục
       </div>

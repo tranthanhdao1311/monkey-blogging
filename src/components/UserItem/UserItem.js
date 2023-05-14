@@ -10,6 +10,7 @@ import images from "../../asset/image";
 import { deleteDoc, doc } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { db } from "../../firebase/firebase-config";
+import ActionView from "../Action/ActionView";
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +47,7 @@ const UserItem = ({ data }) => {
   };
   return (
     <>
-      <tr key={data.id}>
+      <tr className={cx("table-desktop")} key={data.id}>
         <td
           title={data.id}
           style={{
@@ -107,6 +108,69 @@ const UserItem = ({ data }) => {
           </div>
         </td>
       </tr>
+
+      {/* mobile */}
+      <div className={cx("table-mobile")}>
+        <div className={cx("user-mobile-top")}>
+          <span>{data.id}</span>
+          <span>{time + ", " + formatDate}</span>
+        </div>
+        <div className={cx("user-mobile-middle")}>
+          <img
+            className={cx("user-mobile-middle-img")}
+            src={data.image}
+            alt=""
+          />
+          <p className={cx("user-mobile-middle-title")}>{data.username}</p>
+        </div>
+        <div className={cx("user-mobile-bot")}>
+          <table className={cx("user-mobile-bot-table")}>
+            <tr className={cx("user-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Email</td>
+              <td style={{ color: "#6b7280" }}>{data?.email}</td>
+            </tr>
+            <tr className={cx("user-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Quyền hạn</td>
+              <td style={{ color: "#6b7280" }}>
+                {data.role === statusRoleUser.ADMIN && <span>Admin</span>}
+                {data.role === statusRoleUser.MODERATOR && (
+                  <span>Moderator</span>
+                )}
+                {data.role === statusRoleUser.USER && <span>User</span>}
+              </td>
+            </tr>
+            <tr className={cx("user-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Trạng thái</td>
+              <td>
+                {data.status === statusAddPost.APPROVED && (
+                  <LabelStatus type="success">Duyệt</LabelStatus>
+                )}
+                {data.status === statusAddPost.PENDING && (
+                  <LabelStatus type="warning">Đang duyệt</LabelStatus>
+                )}
+                {data.status === statusAddPost.REJECT && (
+                  <LabelStatus type="danger">Từ chối</LabelStatus>
+                )}
+              </td>
+            </tr>
+            <tr className={cx("user-mobile-bot-table-tr")}>
+              <td style={{ fontWeight: "600" }}>Hành động</td>
+              <td>
+                <div className={cx("actions")}>
+                  <ActionEdit
+                    onClick={() => {
+                      handleUpdateUser(data.id);
+                    }}
+                  ></ActionEdit>
+                  <ActionDelete
+                    onClick={() => handleDelete(data.id)}
+                  ></ActionDelete>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </>
   );
 };
