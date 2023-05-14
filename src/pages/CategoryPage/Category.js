@@ -151,6 +151,12 @@ const Category = () => {
           </div>
         )}
       </div>
+      <div className={cx("table-posts-mobile")}>
+        {category.length > 0 &&
+          category.map((item) => (
+            <CateItem key={item.id} data={item}></CateItem>
+          ))}
+      </div>
 
       {currentItem > 0 && (
         <div className={cx("info-pagination")}>

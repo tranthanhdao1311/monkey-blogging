@@ -69,7 +69,7 @@ const CateItem = ({ data, ...props }) => {
 
   return (
     <>
-      <tr key={data.id}>
+      <tr className={cx("table-desktop")} key={data.id}>
         <td
           style={{
             fontSize: "16px",
@@ -111,6 +111,46 @@ const CateItem = ({ data, ...props }) => {
           </div>
         </td>
       </tr>
+
+      <div className={cx("cate-mobile")}>
+        <div className={cx("cate-mobile-tr")}>
+          <span style={{ fontWeight: "600" }}>Id</span>
+          <span style={{ color: "#6b7280" }}>{data.id}</span>
+        </div>
+        <div className={cx("cate-mobile-tr")}>
+          <span style={{ fontWeight: "600" }}>Name</span>
+          <span style={{ color: "#6b7280" }}>{data.name}</span>
+        </div>
+        <div className={cx("cate-mobile-tr")}>
+          <span style={{ fontWeight: "600" }}>Slug</span>
+          <span style={{ color: "#6b7280" }}>{data.slug}</span>
+        </div>
+        <div className={cx("cate-mobile-tr")}>
+          <span style={{ fontWeight: "600" }}>Trạng thái</span>
+          <span>
+            {data.status === statusAddCate.APPROVED && (
+              <LabelStatus type="success">Approved</LabelStatus>
+            )}
+            {data.status === statusAddCate.UNAPPROVED && (
+              <LabelStatus type="danger">Unapproved</LabelStatus>
+            )}
+          </span>
+        </div>
+        <div className={cx("cate-mobile-tr")}>
+          <span style={{ fontWeight: "600" }}>Hành động</span>
+          <span>
+            <div className={cx("actions")}>
+              <ActionView></ActionView>
+              <ActionEdit
+                onClick={() => {
+                  navigate(`/manage/update-category?id=${data.id}`);
+                }}
+              ></ActionEdit>
+              <ActionDelete onClick={handleDelete}></ActionDelete>
+            </div>
+          </span>
+        </div>
+      </div>
     </>
   );
 };

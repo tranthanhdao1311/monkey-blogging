@@ -63,6 +63,7 @@ const PostItem = ({ data }) => {
   const formatDate = new Date(date).toLocaleDateString("vi-VI");
   return (
     <>
+      {/* desktop */}
       <tr className={cx("table-desktop")} key={data.id}>
         <td
           style={{
@@ -119,6 +120,8 @@ const PostItem = ({ data }) => {
           </div>
         </td>
       </tr>
+
+      {/* mobile */}
       <div className={cx("posts-mobile")}>
         <div className={cx("posts-mobile-top")}>
           <span>{data.id}</span>

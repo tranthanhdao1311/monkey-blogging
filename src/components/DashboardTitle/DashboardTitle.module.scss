@@ -11,3 +11,9 @@
   color: #808191;
   font-size: 14px;
 }
+
+@media (max-width: 768px) {
+  .heading {
+    margin-bottom: 20px;
+  }
+}

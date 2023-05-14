@@ -106,3 +106,20 @@
   font-weight: 600;
   margin: 40px 0;
 }
+
+.table-posts-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .table-posts {
+    display: none;
+  }
+  .table-posts-mobile {
+    display: block;
+  }
+  .heading {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
