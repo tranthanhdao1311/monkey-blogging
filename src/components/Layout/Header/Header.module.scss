@@ -74,12 +74,12 @@
 }
 
 //size-btn
-.size-btn {
+.btn-sign-dashboard {
   height: 46px;
-  padding: 0 25px !important;
+  padding: 0 25px;
   margin-right: 20px;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .bg-color-primary {
@@ -271,7 +271,7 @@
 
   .search {
     input {
-      width: 140px;
+      width: 120px;
       padding: 5px 15px;
     }
   }
@@ -295,8 +295,8 @@
 }
 
 @media (max-width: 500px) {
-  .size-btn {
-    font-size: 14px;
+  .user {
+    display: none;
   }
   .header-main {
     padding-left: 0px;
@@ -305,5 +305,11 @@
   .header-category {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .btn-sign-dashboard {
+    font-size: 12px;
+    height: 42px;
+    padding: 0 15px;
   }
 }

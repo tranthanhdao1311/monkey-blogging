@@ -166,6 +166,14 @@ const Header = () => {
                   </>
                 ) : (
                   <>
+                    <Link to="/dashboard">
+                      <Button
+                        type="button"
+                        className={cx("btn-sign-dashboard", "bg-color-primary")}
+                      >
+                        Dashboard
+                      </Button>
+                    </Link>
                     <HeadLessTippy
                       delay={[0, 800]}
                       offset={[14, 10]}
@@ -266,6 +274,7 @@ const Header = () => {
                 </ul>
                 {/* </Tippy> */}
               </div>
+
               <p
                 className={cx("all-cate", showAllCate && "active-all-cate")}
                 onClick={() => handleShowAll()}
