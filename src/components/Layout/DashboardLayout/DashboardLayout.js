@@ -5,11 +5,10 @@ import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import SidebarDashboard from "../SidebarDashboard/SidebarDashboard";
 import { useAuth } from "../../../context/auth-context";
 import NotFoundPage from "../../../pages/NotFoundPage/NotFoundPage";
-import { useState } from "react";
 import { useToggleSideBar } from "../../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = React.memo(({ children }) => {
   const { userInfo } = useAuth();
 
   const { show } = useToggleSideBar();
@@ -31,6 +30,6 @@ const DashboardLayout = ({ children }) => {
       </div>
     </div>
   );
-};
+});
 
 export default DashboardLayout;

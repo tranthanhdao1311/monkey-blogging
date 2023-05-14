@@ -21,12 +21,16 @@
 }
 .sidebar-mobile {
   display: none;
-  position: absolute;
+  position: fixed;
+  height: 100%;
+  top: 92.8px;
   left: 0;
   right: 0;
   background-color: white;
-  z-index: 1000;
+  z-index: 100001;
   padding: 0 20px;
+  padding-top: 10px;
+  animation: sidebarShow 0.2s ease-in-out;
 }
 @media (max-width: 1023px) {
   .sidebar {
@@ -34,7 +38,6 @@
   }
   .sidebar-mobile {
     display: block;
-    animation: sidebarShow 0.2s ease-in-out;
   }
   .dashboard-main {
     display: block;

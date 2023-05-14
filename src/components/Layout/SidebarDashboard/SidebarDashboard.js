@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase-config";
+import { useToggleSideBar } from "../../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
 
@@ -49,11 +50,22 @@ const SidebarDashboard = () => {
     navigate("/");
   };
 
+  const { setShow } = useToggleSideBar();
+
+  const handleClickItem = () => {
+    setShow(false);
+  };
+
   return (
     <>
       <div className={cx("sidebar-list")}>
         {sidebarItems.map((item, index) => (
-          <NavLink className={active} to={item.to} key={index}>
+          <NavLink
+            className={active}
+            to={item.to}
+            key={index}
+            onClick={handleClickItem}
+          >
             <div className={cx("item-sidebar")}>
               <div className={cx("item-link")}>
                 <p>{item.icon}</p>

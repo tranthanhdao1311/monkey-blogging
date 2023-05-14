@@ -55,3 +55,13 @@
   gap: 40px;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .form-layout {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .input {
+    margin-bottom: 20px;
+  }
+}

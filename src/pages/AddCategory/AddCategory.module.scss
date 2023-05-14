@@ -35,3 +35,12 @@
   color: white;
   background-color: var(--color-primary);
 }
+
+@media (max-width: 768px) {
+  .form-layout {
+    display: block;
+  }
+  .input {
+    margin-bottom: 10px;
+  }
+}

@@ -22,6 +22,7 @@ import useRoleUser from "../../hook/useRoleUser";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useToggleSideBar } from "../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
 
@@ -35,6 +36,8 @@ const Post = () => {
   const { control } = useForm({ mode: "onChange" });
 
   const { roleUserId } = useRoleUser();
+
+  const { setShow } = useToggleSideBar();
 
   const handleLoadmoreCategory = async () => {
     const nextRef = query(

@@ -1,5 +1,10 @@
 import "./App.module.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import { AuthProvider } from "./context/auth-context";
 import { publicRoutes } from "./routes/routes";
 import { Fragment, Suspense } from "react";

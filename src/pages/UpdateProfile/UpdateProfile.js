@@ -19,14 +19,17 @@ import useRoleUser from "../../hook/useRoleUser";
 import TextArea from "../../components/textarea/TextArea";
 import { useAuth } from "../../context/auth-context";
 import { sendPasswordResetEmail, updatePassword } from "firebase/auth";
+import { useToggleSideBar } from "../../context/dashboard-context";
 const cx = classNames.bind(styles);
 const UpdateProfile = () => {
-  //   const [params] = useSearchParams();
-  //   const userId = params.get("id");
   const navigate = useNavigate();
   const { userInfo } = useAuth();
 
   const { roleUserId } = useRoleUser();
+  const { setShow } = useToggleSideBar();
+  useEffect(() => {
+    setShow(false);
+  }, [setShow]);
   const {
     control,
     setValue,
