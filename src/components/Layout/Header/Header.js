@@ -37,10 +37,6 @@ const menuLinks = [
     url: "/",
     title: "Trang chủ",
   },
-  {
-    url: "/blog",
-    title: "Blog",
-  },
 ];
 
 function getLastName(name) {

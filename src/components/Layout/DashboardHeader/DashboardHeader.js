@@ -11,6 +11,9 @@ import { useState } from "react";
 import useRoleUser from "../../../hook/useRoleUser";
 import { statusRoleUser } from "../../../configStatus";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useToggleSideBar } from "../../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
 const DashboardHeader = () => {
@@ -35,12 +38,36 @@ const DashboardHeader = () => {
       navigate("/add-post");
     }
   }
+
+  const { setShow } = useToggleSideBar();
+  const handleToggleSideBar = () => {
+    setShow((prev) => !prev);
+  };
+
   return (
     <header className={cx("header")}>
       <Link className={cx("logo")} to="/">
         <img className={cx("img-logo")} src={images.logo} alt="" />
+
         <span>Monkey Blogging</span>
       </Link>
+      <div className={cx("bars-mobile")}>
+        <FontAwesomeIcon
+          onClick={() => handleToggleSideBar()}
+          className={cx("bars-icon")}
+          icon={faBars}
+        ></FontAwesomeIcon>
+      </div>
+      <div className={cx("header-middle")}>
+        <Button
+          onClick={handleClick}
+          className={cx("btn-new-post-mobile")}
+          type="button"
+        >
+          Thêm bài viết
+        </Button>
+      </div>
+
       <div className={cx("header-right")}>
         <Button
           onClick={handleClick}

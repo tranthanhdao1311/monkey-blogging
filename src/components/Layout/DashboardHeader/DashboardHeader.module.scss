@@ -50,3 +50,42 @@
   color: white;
   background-color: var(--color-primary);
 }
+.header-middle {
+  display: none;
+}
+
+.btn-new-post-mobile {
+  padding: 0 30px;
+  height: 52px;
+  font-size: 16px;
+  color: white;
+  background-color: var(--color-primary);
+}
+.bars-mobile {
+  display: none;
+}
+.bars-icon {
+  font-size: 20px;
+  color: #808191;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .header {
+    span,
+    .logo {
+      display: none;
+    }
+  }
+  .header-middle {
+    display: block;
+  }
+
+  .btn-new-post {
+    display: none;
+  }
+
+  .bars-mobile {
+    display: block;
+  }
+}

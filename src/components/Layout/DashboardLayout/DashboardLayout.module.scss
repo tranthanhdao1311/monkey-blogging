@@ -1,4 +1,5 @@
 .dashboard-main {
+  position: relative;
   padding: 40px 20px;
   display: grid;
   grid-template-columns: 300px minmax(0px, 1fr);
@@ -17,4 +18,23 @@
 .wrapper {
   max-width: 1600px;
   margin: 0 auto;
+}
+.sidebar-mobile {
+  display: none;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  width: 100%;
+  padding-right: 20px;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebar-mobile {
+    display: block;
+  }
+  .dashboard-main {
+    display: block;
+  }
 }
