@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./components/GlobalStyle/GlobalStyle";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +14,7 @@ root.render(
   <GlobalStyle>
     <App />
     <ToastContainer></ToastContainer>
+    <ScrollToTop></ScrollToTop>
   </GlobalStyle>
   // </React.StrictMode>
 );

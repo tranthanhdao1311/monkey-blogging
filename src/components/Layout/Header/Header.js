@@ -177,10 +177,16 @@ const Header = () => {
                     <HeadLessTippy
                       delay={[0, 800]}
                       offset={[14, 10]}
+                      placement="bottom-start"
                       interactive
                       render={(attrs) => (
-                        <div tabIndex="-1" {...attrs} className="logout">
-                          <div onClick={() => handleLogout()}>Đăng xuất</div>
+                        <div tabIndex="-1" {...attrs}>
+                          <div
+                            className={cx("logout")}
+                            onClick={() => handleLogout()}
+                          >
+                            Đăng xuất
+                          </div>
                         </div>
                       )}
                     >

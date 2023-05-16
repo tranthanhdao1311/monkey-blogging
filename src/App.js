@@ -12,6 +12,7 @@ import "swiper/scss";
 import "swiper/scss/autoplay";
 import MainLayout from "./components/Layout/MainLayout/MainLayout";
 import { ToggleSideBarProvider } from "./context/dashboard-context";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   return (

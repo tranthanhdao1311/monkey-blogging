@@ -1,0 +1,14 @@
+.box {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.icon-box {
+  padding: 10px 15px;
+  color: white;
+}
