@@ -19,36 +19,36 @@ function App() {
     <div>
       <AuthProvider>
         <ToggleSideBarProvider>
-          <Suspense>
-            <Router>
-              <Routes>
-                {publicRoutes.map((route, index) => {
-                  const Page = route.component;
-                  let Layout = MainLayout;
-                  if (route.layout) {
-                    Layout = route.layout;
-                  } else if (route.layout === null) {
-                    Layout = Fragment;
-                  }
+          <Router>
+            <Routes>
+              {publicRoutes.map((route, index) => {
+                const Page = route.component;
+                let Layout = MainLayout;
+                if (route.layout) {
+                  Layout = route.layout;
+                } else if (route.layout === null) {
+                  Layout = Fragment;
+                }
 
-                  return (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      element={
-                        <Layout>
+                return (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      <Layout>
+                        <Suspense>
                           <Page></Page>
-                        </Layout>
-                      }
-                    ></Route>
-                  );
-                })}
-                {/* <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
+                        </Suspense>
+                      </Layout>
+                    }
+                  ></Route>
+                );
+              })}
+              {/* <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
             <Route path="/sign-in" element={<SignInPage></SignInPage>}></Route>
             <Route path="/tin-tuc" element={<Tintucpage></Tintucpage>}></Route> */}
-              </Routes>
-            </Router>
-          </Suspense>
+            </Routes>
+          </Router>
         </ToggleSideBarProvider>
       </AuthProvider>
     </div>
