@@ -8,6 +8,7 @@ import PostsNewest from "../../components/PostsNewest/PostsNewest";
 const HomePage = () => {
   return (
     <>
+      <Banner></Banner>
       <Featured></Featured>
       <PostsNewest></PostsNewest>
       <AttentionPost></AttentionPost>
