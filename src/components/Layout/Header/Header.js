@@ -222,12 +222,11 @@ const Header = () => {
               <div className={cx("box-ul")}>
                 <ul className={cx("cate-list")}>
                   {categories.length > 0 &&
-                    categories.map((item) => (
+                    categories.slice(0, 13).map((item) => (
                       <div key={item.id}>
                         <HeadLessTippy
                           delay={[0, 0]}
                           placement="bottom-start"
-                          offset={[14, 10]}
                           interactive
                           // visible
                           // hideOnClick={item.id === id}

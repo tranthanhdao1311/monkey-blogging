@@ -18,7 +18,7 @@ const AttentionPostItem = ({ data }) => {
         to={data.slug}
       ></PostImage>
       <div className={cx("info")}>
-        <Link to={data.slug} className={cx("title-post")}>
+        <Link to={`/${data.slug}`} className={cx("title-post")}>
           {data.title}
         </Link>
         <div>
