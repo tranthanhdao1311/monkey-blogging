@@ -7,10 +7,14 @@ import PostInfo from "../PostInfo/PostInfo";
 import PostTitle from "../PostTitle/PostTitle";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import { Link } from "react-router-dom";
+import useTime from "../../hook/useTime";
 
 const cx = classNames.bind(styles);
 
 const PostFeatureItem = ({ data }) => {
+  console.log(data);
+  const { time, unit } = useTime(data);
+
   if (!data && !data.id) return null;
 
   const date = new Date(data?.createAt?.seconds * 1000);
@@ -37,10 +41,7 @@ const PostFeatureItem = ({ data }) => {
           </div>
           <div className={cx("header-post-right")}>
             {data?.user?.username && (
-              <PostInfo
-                date={formatDate}
-                author={data.user.username}
-              ></PostInfo>
+              <PostInfo time={time} unit={unit}></PostInfo>
             )}
           </div>
         </div>

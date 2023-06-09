@@ -5,7 +5,7 @@ import styles from "./PostInfo.module.scss";
 const cx = classNames.bind(styles);
 
 const PostInfo = ({
-  time = "Mar 23",
+  time = "",
   unit = "",
   author = "Andiez Le",
   className,
@@ -14,10 +14,10 @@ const PostInfo = ({
   return (
     <div className={cx("date-author", className)}>
       <span className={cx("date")}>{time + " " + unit}</span>
-      <span className={cx("dot", bgColorDot)}></span>
-      <Link to="/author" className={cx("author")}>
+      {/* <span className={cx("dot", bgColorDot)}></span> */}
+      {/* <Link to="/author" className={cx("author")}>
         {author}
-      </Link>
+      </Link> */}
     </div>
   );
 };
