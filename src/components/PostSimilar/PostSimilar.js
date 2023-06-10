@@ -47,49 +47,56 @@ const PostSimilar = ({ data }) => {
     getData();
   }, [data.category?.id, data.id]);
   return (
-    <div className={cx("container")}>
-      <div className={cx("post-similar")}>
-        <span className={cx("border-title")}></span>
-        <h1 className={cx("title")}>Bài viết liên quan</h1>
-        <div className={cx("content")}>
-          <div className={cx("post-list")}>
-            {similar.map((item) => {
-              const date = new Date(item.createAt?.seconds * 1000);
-              const formatDate = new Date(date).toLocaleDateString("vi-VI");
+    <>
+      {similar.length > 0 && (
+        <div className={cx("container")}>
+          <div className={cx("post-similar")}>
+            <span className={cx("border-title")}></span>
+            <h1 className={cx("title")}>Bài viết liên quan</h1>
+            <div className={cx("content")}>
+              <div className={cx("post-list")}>
+                {similar.map((item) => {
+                  const date = new Date(item.createAt?.seconds * 1000);
+                  const formatDate = new Date(date).toLocaleDateString("vi-VI");
 
-              return (
-                <div
-                  className={cx("post-item")}
-                  key={item.id}
-                  // onClick={() => {
-                  //   navigate(`/${item.slug}`);
-                  // }}
-                >
-                  <PostImage
-                    to={item.slug}
-                    url={item?.image}
-                    className={cx("size-img-medium")}
-                  ></PostImage>
-                  <PostCategory to={item.category?.slug}>
-                    {item?.category?.name}
-                  </PostCategory>
+                  return (
+                    <div
+                      className={cx("post-item")}
+                      key={item.id}
+                      // onClick={() => {
+                      //   navigate(`/${item.slug}`);
+                      // }}
+                    >
+                      <PostImage
+                        to={item.slug}
+                        url={item?.image}
+                        className={cx("size-img-medium")}
+                      ></PostImage>
+                      <PostCategory to={item.category?.slug}>
+                        {item?.category?.name}
+                      </PostCategory>
 
-                  <PostTitle to={item.slug} className={cx("style-posttitle")}>
-                    {item?.title}
-                  </PostTitle>
-                  <PostInfo
-                    date={formatDate}
-                    author={item.user?.username}
-                    bgColorDot={cx("bg-color-dot")}
-                    className={cx("post-info-style")}
-                  ></PostInfo>
-                </div>
-              );
-            })}
+                      <PostTitle
+                        to={item.slug}
+                        className={cx("style-posttitle")}
+                      >
+                        {item?.title}
+                      </PostTitle>
+                      <PostInfo
+                        date={formatDate}
+                        author={item.user?.username}
+                        bgColorDot={cx("bg-color-dot")}
+                        className={cx("post-info-style")}
+                      ></PostInfo>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

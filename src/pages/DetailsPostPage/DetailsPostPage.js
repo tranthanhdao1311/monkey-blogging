@@ -121,7 +121,6 @@ const DetailsPostPage = () => {
   };
 
   const [showFromRepCmt, setShowFromRepCmt] = useState(false);
-  console.log(showFromRepCmt);
   const handleRepComment = (item) => {
     setActiveClick(false);
 
@@ -352,7 +351,6 @@ const DetailsPostPage = () => {
           <img src={images.banner2} alt="" />
         </div>
       </div>
-
       <PostSimilar data={postDetail}></PostSimilar>
     </div>
   );
