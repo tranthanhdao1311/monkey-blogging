@@ -35,6 +35,7 @@ const cx = classNames.bind(styles);
 
 const DetailsPostPage = () => {
   const { userInfo } = useAuth();
+  console.log(userInfo);
   const { control: control1, handleSubmit: handleSubmitComment1 } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -60,6 +61,7 @@ const DetailsPostPage = () => {
       userName: "",
     },
   });
+
   // hien thi chi tiet bai viet
   const params = useParams();
   const { slug } = params;
@@ -186,6 +188,7 @@ const DetailsPostPage = () => {
       <div className={cx("post-content")}>
         <div className={cx("entry-content")}>
           {parse(postDetail?.content || "")}
+          <p className={cx("info-user-posts")}>{userInfo?.displayName}</p>
         </div>
         {/* <div className={cx("author")}>
           <div className={cx("author-img")}>

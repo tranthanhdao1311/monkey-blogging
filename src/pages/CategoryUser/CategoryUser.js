@@ -34,7 +34,6 @@ const CategoryUser = () => {
   }, [slug]);
 
   const [posts, setPosts] = useState([]);
-  console.log(posts);
   const postFirst = posts.slice(0, 1);
   const postSecond = posts.slice(1, 3);
   const postOrder = posts.slice(3);
