@@ -30,12 +30,12 @@ import TextArea from "../../components/textarea/TextArea";
 import images from "../../asset/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { useToggleSideBar } from "../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
 
 const DetailsPostPage = () => {
   const { userInfo } = useAuth();
-  console.log(userInfo);
   const { control: control1, handleSubmit: handleSubmitComment1 } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -66,6 +66,15 @@ const DetailsPostPage = () => {
   const params = useParams();
   const { slug } = params;
   const [postDetail, setPostDetail] = useState({});
+
+  // hide show results search
+  const { setShow } = useToggleSideBar();
+  useEffect(() => {
+    setShow(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps, no-use-before-define
+  }, [postDetail]);
+  //
+
   useEffect(() => {
     async function fetchData() {
       if (!slug) return;

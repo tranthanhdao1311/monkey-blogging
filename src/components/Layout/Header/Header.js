@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   faBars,
+  faChessKing,
   faHome,
   faMagnifyingGlass,
   faUser,
@@ -22,6 +23,7 @@ import {
   collection,
   doc,
   getDoc,
+  getDocs,
   onSnapshot,
   query,
   where,
@@ -29,6 +31,9 @@ import {
 import ShowAllCate from "../../ShowAllCate/ShowAllCate";
 import stickybits from "stickybits";
 import { useRef } from "react";
+import debounce from "lodash.debounce";
+import Loading from "../../loading/Loading";
+import { useToggleSideBar } from "../../../context/dashboard-context";
 
 const cx = classNames.bind(styles);
 
@@ -50,6 +55,7 @@ function getLastName(name) {
 
 const Header = () => {
   const { userInfo } = useAuth();
+  const { show, setShow } = useToggleSideBar();
 
   const handleLogout = () => {
     signOut(auth);
@@ -113,6 +119,61 @@ const Header = () => {
     navigate(`/category/${item.slug}`);
   };
 
+  const [valueSearch, setValueSearch] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [showTippy, setShowTippy] = useState(false);
+  const [loadingValueSearch, setLoadingValueSearch] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      const colRef = collection(db, "posts");
+      setLoadingValueSearch(true);
+
+      onSnapshot(colRef, (snapshot) => {
+        let result = [];
+        snapshot.forEach((doc) => {
+          result.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+
+        const postSearch =
+          valueSearch &&
+          result.filter((item) =>
+            item.title.toLowerCase().includes(valueSearch.toLowerCase())
+          );
+
+        setLoadingValueSearch(false);
+        setShow(true);
+        setPosts(postSearch);
+      });
+    }
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueSearch]);
+
+  const handleSearchPosts = debounce((e) => {
+    setValueSearch(e.target.value);
+  }, 500);
+
+  const handleOnClickOutside = () => {
+    setShow(false);
+  };
+
+  // useEffect(() => {
+  //   const handleBeforeUnload = (event) => {
+  //     event.preventDefault();
+  //     setShow(false);
+  //   };
+
+  //   window.addEventListener("beforeunload", handleBeforeUnload);
+
+  //   return () => {
+  //     window.removeEventListener("beforeunload", handleBeforeUnload);
+  //   };
+  // }, []);
   return (
     <>
       <header className={cx("header")}>
@@ -134,12 +195,54 @@ const Header = () => {
                 </ul>
               </div>
               <div className={cx("menu-right")}>
-                <div className={cx("search")}>
-                  <input type="text" placeholder="Tìm kiếm..." />
-                  <FontAwesomeIcon
-                    className={cx("icon")}
-                    icon={faMagnifyingGlass}
-                  ></FontAwesomeIcon>
+                <div className={cx("box-search")}>
+                  <HeadLessTippy
+                    appendTo={() => document.body}
+                    delay={[0, 800]}
+                    offset={[14, 10]}
+                    visible={valueSearch.length > 0 && show}
+                    onClickOutside={handleOnClickOutside}
+                    placement="bottom-start"
+                    interactive
+                    render={(attrs) => (
+                      <div tabIndex="-1" {...attrs}>
+                        <div className={cx("info-search")}>
+                          {loadingValueSearch ? (
+                            <Loading className={cx("border-loading")}></Loading>
+                          ) : posts.length > 0 ? (
+                            posts.slice(0, 6).map((item) => (
+                              <Link key={item.id} to={`/${item.slug}`}>
+                                <p className={cx("results")}>{item.title}</p>
+                              </Link>
+                            ))
+                          ) : (
+                            <p className={cx("no-results")}>
+                              Không tìm thấy bài viết
+                            </p>
+                          )}
+                          {posts.length > 0 && (
+                            <Link to={"/"}>
+                              <p className={cx("see-all")}>
+                                Xem tất cả {posts.length} bài viết được tìm thấy
+                              </p>
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  >
+                    <div className={cx("search")}>
+                      <input
+                        onChange={(e) => handleSearchPosts(e)}
+                        type="text"
+                        placeholder="Tìm kiếm..."
+                      />
+                      <FontAwesomeIcon
+                        className={cx("icon")}
+                        icon={faMagnifyingGlass}
+                      ></FontAwesomeIcon>
+                    </div>
+                  </HeadLessTippy>
                 </div>
                 {!userInfo ? (
                   <>

@@ -21,7 +21,6 @@ const cx = classNames.bind(styles);
 
 const PostsNewest = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
   useEffect(() => {
     const colRef = collection(db, "posts");
     const queries = query(

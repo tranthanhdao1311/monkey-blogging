@@ -12,7 +12,6 @@ import useTime from "../../hook/useTime";
 const cx = classNames.bind(styles);
 
 const PostFeatureItem = ({ data }) => {
-  console.log(data);
   const { time, unit } = useTime(data);
 
   if (!data && !data.id) return null;
