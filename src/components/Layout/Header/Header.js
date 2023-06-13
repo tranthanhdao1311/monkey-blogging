@@ -34,6 +34,7 @@ import { useRef } from "react";
 import debounce from "lodash.debounce";
 import Loading from "../../loading/Loading";
 import { useToggleSideBar } from "../../../context/dashboard-context";
+import { set } from "react-hook-form";
 
 const cx = classNames.bind(styles);
 
@@ -74,7 +75,6 @@ const Header = () => {
       });
     }
   }, []);
-
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const colRef = collection(db, "categories");
@@ -121,11 +121,10 @@ const Header = () => {
 
   const [valueSearch, setValueSearch] = useState("");
   const [posts, setPosts] = useState([]);
-  const [showTippy, setShowTippy] = useState(false);
   const [loadingValueSearch, setLoadingValueSearch] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
+    if (valueSearch && valueSearch.length > 0) {
       const colRef = collection(db, "posts");
       setLoadingValueSearch(true);
 
@@ -145,16 +144,17 @@ const Header = () => {
           );
 
         setLoadingValueSearch(false);
-        setShow(true);
         setPosts(postSearch);
       });
     }
-
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueSearch]);
+  }, [setShow, valueSearch]);
 
   const handleSearchPosts = debounce((e) => {
+    if (e.target.value.length > 0) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
     setValueSearch(e.target.value);
   }, 500);
 
@@ -200,7 +200,7 @@ const Header = () => {
                     appendTo={() => document.body}
                     delay={[0, 800]}
                     offset={[14, 10]}
-                    visible={valueSearch.length > 0 && show}
+                    visible={show}
                     onClickOutside={handleOnClickOutside}
                     placement="bottom-start"
                     interactive
@@ -234,6 +234,7 @@ const Header = () => {
                     <div className={cx("search")}>
                       <input
                         onChange={(e) => handleSearchPosts(e)}
+                        onFocus={() => valueSearch.length > 0 && setShow(true)}
                         type="text"
                         placeholder="Tìm kiếm..."
                       />
