@@ -310,12 +310,14 @@
   width: 300px;
   margin-right: 20px;
   position: relative;
+  z-index: 10000;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
 // search
 .search {
-  border: 1px solid #ccc;
-  border-radius: 10px;
   height: 46px;
   display: flex;
   justify-content: center;

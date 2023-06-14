@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./PostsNewest.module.scss";
-import PostCategory from "../PostCategory/PostCategory";
-import PostTitle from "../PostTitle/PostTitle";
-import PostInfo from "../PostInfo/PostInfo";
-import PostImage from "../PostImage/PostImage";
-import {
-  collection,
-  limit,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 import PostNewestFirst from "../PostNewestFirst/PostNewestFirst";
@@ -21,6 +11,7 @@ const cx = classNames.bind(styles);
 
 const PostsNewest = () => {
   const [posts, setPosts] = useState([]);
+
   useEffect(() => {
     const colRef = collection(db, "posts");
     const queries = query(
@@ -28,21 +19,25 @@ const PostsNewest = () => {
       where("status", "==", 1),
       where("featurePost", "==", false),
       where("bannerPost", "==", false),
-      where("attentionPost", "==", false),
-      limit(4)
+      where("attentionPost", "==", false)
     );
     onSnapshot(queries, (snapshot) => {
       let result = [];
+
       snapshot.forEach((doc) => {
-        result.push({
-          id: doc.id,
-          ...doc.data(),
-        });
+        const date = new Date(doc.data().createAt?.seconds * 1000);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        if (diffTime < 2592000000) {
+          result.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        }
       });
 
       setPosts(result);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [first, ...order] = posts;
@@ -61,12 +56,14 @@ const PostsNewest = () => {
               </div>
               <div className={cx("right")}>
                 {order.length > 0 &&
-                  order.map((item) => (
-                    <PostNewestOrder
-                      key={item.id}
-                      data={item}
-                    ></PostNewestOrder>
-                  ))}
+                  order
+                    .slice(0, 3)
+                    .map((item) => (
+                      <PostNewestOrder
+                        key={item.id}
+                        data={item}
+                      ></PostNewestOrder>
+                    ))}
               </div>
             </>
           )}

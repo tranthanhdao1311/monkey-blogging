@@ -8,6 +8,7 @@ import React from "react";
 const HomePage = React.lazy(() => import("../pages/Homepage/HomePage"));
 const AddBanner = React.lazy(() => import("../pages/AddBanner/AddBanner"));
 const Banner = React.lazy(() => import("../pages/Banner/Banner"));
+const SearchAll = React.lazy(() => import("../pages/SearchAll/SearchAll"));
 const DetailsPostPage = React.lazy(() =>
   import("../pages/DetailsPostPage/DetailsPostPage")
 );
@@ -48,6 +49,7 @@ const publicRoutes = [
   { path: "/category/:slug/:slug", component: ChildrenCategory },
   { path: "/sign-up", component: SignUpPage, layout: LayoutAuth },
   { path: "/sign-in", component: SignInPage, layout: LayoutAuth },
+  { path: "/search/:value", component: SearchAll },
   { path: "/manage/add-banner", component: AddBanner, layout: DashboardLayout },
   { path: "/manage/banner", component: Banner, layout: DashboardLayout },
   { path: "/manage/add-banner", component: AddBanner },

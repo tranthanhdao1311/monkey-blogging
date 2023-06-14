@@ -221,7 +221,7 @@ const Header = () => {
                             </p>
                           )}
                           {posts.length > 0 && (
-                            <Link to={"/"}>
+                            <Link to={`/search/${valueSearch}`}>
                               <p className={cx("see-all")}>
                                 Xem tất cả {posts.length} bài viết được tìm thấy
                               </p>
