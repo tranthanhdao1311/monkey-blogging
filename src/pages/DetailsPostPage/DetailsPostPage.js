@@ -33,6 +33,8 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { useToggleSideBar } from "../../context/dashboard-context";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+// Import thư viện UUID.js
+const { v4: uuidv4 } = require("uuid");
 
 const cx = classNames.bind(styles);
 
@@ -67,11 +69,12 @@ const DetailsPostPage = () => {
     control: control2,
     handleSubmit: handleSubmitComment2,
     getValues,
-    // formState: { errors: errors2 },
+    reset: reset2,
   } = useForm({
     mode: "onChange",
     defaultValues: {
       commentChildren: "",
+      id: "",
       createdAt: "",
       idUser: "",
       userName: "",
@@ -157,18 +160,19 @@ const DetailsPostPage = () => {
       [item.id]: true,
     }));
   };
-
   const handleRepCmt = async (item, values) => {
     try {
       const docRef = doc(db, "comment", item.id);
       await updateDoc(docRef, {
         commentChildren: arrayUnion({
+          id: uuidv4(),
           userName: userInfo.displayName,
           commentChildren: values.commentChildren,
           idUser: userInfo.uid,
           createdAt: new Date(),
         }),
       });
+      reset2({});
     } catch (error) {
       console.log(error);
     }
@@ -183,6 +187,16 @@ const DetailsPostPage = () => {
     setActiveClick(true);
   };
 
+  // xem them cmt
+  // const [seeMore, setSeeMore] = useState(2);
+  const [showCmt, setShowCmt] = useState({});
+  console.log(showCmt);
+  const handleSeeMoreCmt = (item) => {
+    setShowCmt((prev) => ({
+      ...prev,
+      [item.id]: true,
+    }));
+  };
   if (!slug) return <NotFoundPage></NotFoundPage>;
   return (
     <div className={cx("container")}>
@@ -216,15 +230,6 @@ const DetailsPostPage = () => {
             Tác giả: {userInfo?.displayName}
           </p>
         </div>
-        {/* <div className={cx("author")}>
-          <div className={cx("author-img")}>
-            <img className={cx("img")} src={postDetail.user?.image} alt="" />
-          </div>
-          <div className={cx("author-desc")}>
-            <h3 className={cx("author-name")}>{postDetail.user?.fullname}</h3>
-            <p className={cx("desc")}>{postDetail.user?.desc}</p>
-          </div>
-        </div> */}
       </div>
 
       <div className={cx("box-cmt-adver")}>
@@ -271,6 +276,8 @@ const DetailsPostPage = () => {
           </form>
           {comment.map((item) => {
             const showFrom = showFromRepCmt[item.id];
+            const showComment = showCmt[item.id];
+
             const dateCmt = new Date(item?.createAt?.seconds * 1000);
             const formatDateCmt = new Date(dateCmt).toLocaleDateString("vi-VI");
             const formatTimeCmt = new Date(dateCmt).toLocaleTimeString("vi-VI");
@@ -340,43 +347,94 @@ const DetailsPostPage = () => {
                       </div>
                     </form>
                   )}
-                  {item.commentChildren?.map((item1) => {
-                    const dateCmt = new Date(item1?.createdAt?.seconds * 1000);
-                    const formatDateCmt = new Date(dateCmt).toLocaleDateString(
-                      "vi-VI"
-                    );
-                    const formatTimeCmt = new Date(dateCmt).toLocaleTimeString(
-                      "vi-VI"
-                    );
-                    return (
-                      <div className={cx("box-parent-cmt")} key={item1.id}>
-                        <div className={cx("box-img-cmt")}>
-                          <img src={images.imgUserEmpty} alt="" />
-                        </div>
-                        <div>
-                          <div>
-                            <span className={cx("username-cmt")}>
-                              {item1.userName}
-                            </span>
-                            <span style={{ color: "#4f4f4f" }}>
-                              {item1.commentChildren}
-                            </span>
-                          </div>
-                          <div className={cx("info-cmt-parent")} s>
-                            <div className={cx("like-cmt")}>
-                              <FontAwesomeIcon
-                                className={cx("like-cmt-icon")}
-                                icon={faThumbsUp}
-                              ></FontAwesomeIcon>
-                              <span>Thích</span>
+                  {showComment
+                    ? item.commentChildren?.map((item1) => {
+                        const dateCmt = new Date(
+                          item1?.createdAt?.seconds * 1000
+                        );
+                        const formatDateCmt = new Date(
+                          dateCmt
+                        ).toLocaleDateString("vi-VI");
+                        const formatTimeCmt = new Date(
+                          dateCmt
+                        ).toLocaleTimeString("vi-VI");
+                        return (
+                          <div className={cx("box-parent-cmt")} key={item1.id}>
+                            <div className={cx("box-img-cmt")}>
+                              <img src={images.imgUserEmpty} alt="" />
                             </div>
+                            <div>
+                              <div>
+                                <span className={cx("username-cmt")}>
+                                  {item1.userName}
+                                </span>
+                                <span style={{ color: "#4f4f4f" }}>
+                                  {item1.commentChildren}
+                                </span>
+                              </div>
+                              <div className={cx("info-cmt-parent")} s>
+                                <div className={cx("like-cmt")}>
+                                  <FontAwesomeIcon
+                                    className={cx("like-cmt-icon")}
+                                    icon={faThumbsUp}
+                                  ></FontAwesomeIcon>
+                                  <span>Thích</span>
+                                </div>
 
-                            <p>{formatTimeCmt + " " + formatDateCmt}</p>
+                                <p>{formatTimeCmt + " " + formatDateCmt}</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                        );
+                      })
+                    : item.commentChildren?.slice(0, 3).map((item1) => {
+                        const dateCmt = new Date(
+                          item1?.createdAt?.seconds * 1000
+                        );
+                        const formatDateCmt = new Date(
+                          dateCmt
+                        ).toLocaleDateString("vi-VI");
+                        const formatTimeCmt = new Date(
+                          dateCmt
+                        ).toLocaleTimeString("vi-VI");
+                        return (
+                          <div className={cx("box-parent-cmt")} key={item1.id}>
+                            <div className={cx("box-img-cmt")}>
+                              <img src={images.imgUserEmpty} alt="" />
+                            </div>
+                            <div>
+                              <div>
+                                <span className={cx("username-cmt")}>
+                                  {item1.userName}
+                                </span>
+                                <span style={{ color: "#4f4f4f" }}>
+                                  {item1.commentChildren}
+                                </span>
+                              </div>
+                              <div className={cx("info-cmt-parent")} s>
+                                <div className={cx("like-cmt")}>
+                                  <FontAwesomeIcon
+                                    className={cx("like-cmt-icon")}
+                                    icon={faThumbsUp}
+                                  ></FontAwesomeIcon>
+                                  <span>Thích</span>
+                                </div>
+
+                                <p>{formatTimeCmt + " " + formatDateCmt}</p>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                  {!showComment && item?.commentChildren.length > 3 && (
+                    <p
+                      className={cx("see-more")}
+                      onClick={() => handleSeeMoreCmt(item)}
+                    >
+                      Xem thêm phản hồi
+                    </p>
+                  )}
                 </div>
               </div>
             );

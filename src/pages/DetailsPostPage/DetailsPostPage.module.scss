@@ -209,6 +209,13 @@
   margin-top: 45px;
 }
 
+.see-more {
+  padding: 20px 0 0 55px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 @media (max-width: 768px) {
   .post-header {
     flex-direction: column;

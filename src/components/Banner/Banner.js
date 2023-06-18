@@ -18,26 +18,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import PostImage from "../PostImage/PostImage";
+import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 
 const cx = classNames.bind(styles);
-
-const banner = [
-  {
-    title: "Monkey blogging",
-    img: "images.img2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam similique accusantium natus esse facilis! Quaerat voluptates possimus dolorem officiis pariatur, repellat, cupiditate porro, quidem molestiae impedit laudantium neque quo!",
-  },
-  {
-    title: "Monkey blogging 2",
-    img: "images.img2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam similique accusantium natus esse facilis! Quaerat voluptates possimus dolorem officiis pariatur, repellat, cupiditate porro, quidem molestiae impedit laudantium neque quo!",
-  },
-  {
-    title: "Monkey blogging 3",
-    img: "images.img2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam similique accusantium natus esse facilis! Quaerat voluptates possimus dolorem officiis pariatur, repellat, cupiditate porro, quidem molestiae impedit laudantium neque quo!",
-  },
-];
 
 const Banner = () => {
   SwiperCore.use([Autoplay]);
@@ -72,11 +55,10 @@ const Banner = () => {
         slidesPerView={"auto"}
         className={cx("swiper-custom")}
       >
-        {postBanner.length > 0 &&
+        {postBanner.length > 0 ? (
           postBanner.map((item, index) => (
             <SwiperSlide key={index} className={cx("swipper-slide-custom")}>
               <Link to={item.slug} className={cx("overplay")}></Link>
-              {/* <img className={cx("img")} src={item.image} alt="" /> */}
               <PostImage
                 url={item.image}
                 to={item.slug}
@@ -86,13 +68,23 @@ const Banner = () => {
                 <Link to={item.slug} className={cx("tilte")}>
                   {item.title}
                 </Link>
-                {/* <p className={cx("desc")}>{parse(item?.content || "")}</p> */}
               </div>
             </SwiperSlide>
-          ))}
+          ))
+        ) : (
+          <Skeleton></Skeleton>
+        )}
       </Swiper>
     </div>
   );
 };
 
 export default Banner;
+
+export const Skeleton = () => {
+  return (
+    <>
+      <LoadingSkeleton width="100%" height="520px"></LoadingSkeleton>
+    </>
+  );
+};

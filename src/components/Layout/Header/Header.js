@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   faBars,
-  faChessKing,
   faHome,
   faMagnifyingGlass,
   faUser,
@@ -23,7 +22,6 @@ import {
   collection,
   doc,
   getDoc,
-  getDocs,
   onSnapshot,
   query,
   where,
@@ -34,7 +32,6 @@ import { useRef } from "react";
 import debounce from "lodash.debounce";
 import Loading from "../../loading/Loading";
 import { useToggleSideBar } from "../../../context/dashboard-context";
-import { set } from "react-hook-form";
 
 const cx = classNames.bind(styles);
 
