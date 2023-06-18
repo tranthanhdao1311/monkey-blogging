@@ -22,14 +22,14 @@ const TextArea = ({
       <textarea
         autoComplete="off"
         icon={icon}
-        className={children ? cx("style-new") : cx("input", className)}
+        style={props.error && { border: "1px solid red !important" }}
+        className={cx("input", className)}
         type={type}
         placeholder={placeholder}
         {...field}
         {...props}
       ></textarea>
-
-      {children}
+      <p style={{ color: "red" }}>{props.error}</p>
     </div>
   );
 };

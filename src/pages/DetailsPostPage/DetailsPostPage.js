@@ -31,12 +31,26 @@ import images from "../../asset/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { useToggleSideBar } from "../../context/dashboard-context";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const cx = classNames.bind(styles);
 
+const schema = yup.object().shape({
+  comment: yup.string().required("Bình luận không được bỏ trống!"),
+});
+const schemaChildren = yup.object().shape({
+  commentChildren: yup.string().required("Bình luận không được bỏ trống!"),
+});
+
 const DetailsPostPage = () => {
   const { userInfo } = useAuth();
-  const { control: control1, handleSubmit: handleSubmitComment1 } = useForm({
+  const {
+    control: control1,
+    handleSubmit: handleSubmitComment1,
+    reset,
+    formState: { errors },
+  } = useForm({
     mode: "onChange",
     defaultValues: {
       comment: "",
@@ -46,12 +60,14 @@ const DetailsPostPage = () => {
       userName: "",
       commentChildren: [],
     },
+    resolver: yupResolver(schema),
   });
 
   const {
     control: control2,
     handleSubmit: handleSubmitComment2,
     getValues,
+    // formState: { errors: errors2 },
   } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -60,8 +76,8 @@ const DetailsPostPage = () => {
       idUser: "",
       userName: "",
     },
+    // resolver: yupResolver(schemaChildren),
   });
-
   // hien thi chi tiet bai viet
   const params = useParams();
   const { slug } = params;
@@ -128,6 +144,7 @@ const DetailsPostPage = () => {
         comment: values.comment,
         createAt: serverTimestamp(),
       });
+      reset({});
     } catch (error) {}
   };
 
@@ -166,8 +183,6 @@ const DetailsPostPage = () => {
     setActiveClick(true);
   };
 
-  // if (!postDetail.title)
-  //   return <Loading size="size-big" className={cx("style-loading")}></Loading>;
   if (!slug) return <NotFoundPage></NotFoundPage>;
   return (
     <div className={cx("container")}>
@@ -197,7 +212,9 @@ const DetailsPostPage = () => {
       <div className={cx("post-content")}>
         <div className={cx("entry-content")}>
           {parse(postDetail?.content || "")}
-          <p className={cx("info-user-posts")}>{userInfo?.displayName}</p>
+          <p className={cx("info-user-posts")}>
+            Tác giả: {userInfo?.displayName}
+          </p>
         </div>
         {/* <div className={cx("author")}>
           <div className={cx("author-img")}>
@@ -223,10 +240,16 @@ const DetailsPostPage = () => {
               <TextArea
                 name="comment"
                 id="comment"
+                error={errors?.comment?.message}
                 type="text"
                 control={control1}
                 placeholder="Ý kiến của bạn"
-                className={cx("height-input-cmt", activeClick && "active-cmt")}
+                className={cx(
+                  "height-input-cmt",
+                  errors?.comment?.message
+                    ? "error"
+                    : activeClick && "active-cmt"
+                )}
                 onClick={() => handleClickTextArea()}
               ></TextArea>
             </div>
@@ -273,7 +296,7 @@ const DetailsPostPage = () => {
                         <span>Thích</span>
                       </div>
                       <p
-                        style={{ whiteSpace: "nowrap" }}
+                        style={{ whiteSpace: "nowrap", cursor: "pointer" }}
                         onClick={() => handleRepComment(item)}
                       >
                         Trả lời

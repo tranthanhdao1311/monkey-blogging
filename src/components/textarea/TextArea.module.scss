@@ -22,17 +22,3 @@
 ::placeholder {
   color: #dac4bd;
 }
-.style-new {
-  width: 100%;
-  padding: 16px 60px 16px 20px;
-  background-color: transparent;
-  border: 1px solid rgb(241, 241, 243);
-  border-radius: 8px;
-  transition: all 0.2s linear 0s;
-  color: rgb(23, 23, 37);
-  font-size: 14px;
-  outline: none;
-}
-.style-new:focus {
-  border: 1px solid black;
-}

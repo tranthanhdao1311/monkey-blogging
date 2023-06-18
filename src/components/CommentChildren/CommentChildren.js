@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 const cx = classNames.bind(styles);
 
 const CommentChildren = ({ data }) => {
-  console.log(data.commentChildren);
   const { userInfo } = useAuth();
   const { control, handleSubmit } = useForm({
     mode: "onChange",
