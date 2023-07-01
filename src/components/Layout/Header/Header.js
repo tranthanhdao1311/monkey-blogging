@@ -161,136 +161,150 @@ const Header = () => {
 
   return (
     <>
-      <header className={cx("header")}>
-        <div style={{ borderBottom: "1px solid #e5e5e5" }}>
-          <div className={cx("container")}>
-            <div className={cx("header-main")}>
-              <div className={cx("menu-left")}>
-                <div className={cx("logo")}>
-                  <Link onClick={() => handleClickParentCate()} to="/">
-                    <img src={images.logo} alt="" />
-                  </Link>
+      <div style={{ borderBottom: "1px solid #e5e5e5" }}>
+        <header className={cx("header")}>
+          <div>
+            <div className={cx("container")}>
+              <div className={cx("header-main")}>
+                <div className={cx("menu-left")}>
+                  <div className={cx("logo")}>
+                    <Link onClick={() => handleClickParentCate()} to="/">
+                      <img src={images.logo} alt="" />
+                    </Link>
+                  </div>
+                  <ul className={cx("menu")}>
+                    {menuLinks.map((item, index) => (
+                      <li className={cx("menu-item")} key={index}>
+                        <Link to={item.url}>{item.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className={cx("menu")}>
-                  {menuLinks.map((item, index) => (
-                    <li className={cx("menu-item")} key={index}>
-                      <Link to={item.url}>{item.title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className={cx("menu-right")}>
-                <div className={cx("box-search")}>
-                  <HeadLessTippy
-                    appendTo={() => document.body}
-                    delay={[0, 800]}
-                    offset={[14, 10]}
-                    visible={show}
-                    onClickOutside={handleOnClickOutside}
-                    placement="bottom-start"
-                    interactive
-                    render={(attrs) => (
-                      <div tabIndex="-1" {...attrs}>
-                        <div className={cx("info-search")}>
-                          {loadingValueSearch ? (
-                            <Loading className={cx("border-loading")}></Loading>
-                          ) : posts.length > 0 ? (
-                            posts.slice(0, 6).map((item) => (
-                              <Link key={item.id} to={`/${item.slug}`}>
-                                <p className={cx("results")}>{item.title}</p>
-                              </Link>
-                            ))
-                          ) : (
-                            <p className={cx("no-results")}>
-                              Không tìm thấy bài viết
-                            </p>
-                          )}
-                          {posts.length > 0 && (
-                            <Link to={`/search/${valueSearch}`}>
-                              <p className={cx("see-all")}>
-                                Xem tất cả {posts.length} bài viết được tìm thấy
-                              </p>
-                            </Link>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  >
-                    <div className={cx("search")}>
-                      <input
-                        onChange={(e) => handleSearchPosts(e)}
-                        onFocus={() => valueSearch.length > 0 && setShow(true)}
-                        type="text"
-                        placeholder="Tìm kiếm..."
-                      />
-                      <FontAwesomeIcon
-                        className={cx("icon")}
-                        icon={faMagnifyingGlass}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </HeadLessTippy>
-                </div>
-                {!userInfo ? (
-                  <>
-                    <Link to="/sign-in">
-                      <Button
-                        type="button"
-                        className={cx(
-                          "btn-sign-up",
-                          "bg-color-primary",
-                          "size-btn"
-                        )}
-                      >
-                        Đăng nhập
-                      </Button>
-                    </Link>
-                    <Link to="/sign-in">
-                      <Button
-                        type="button"
-                        className={cx("btn-sign-up-mobile", "bg-color-primary")}
-                      >
-                        <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-                      </Button>
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/dashboard">
-                      <Button
-                        type="button"
-                        className={cx("btn-sign-dashboard", "bg-color-primary")}
-                      >
-                        Dashboard
-                      </Button>
-                    </Link>
+                <div className={cx("menu-right")}>
+                  <div className={cx("box-search")}>
                     <HeadLessTippy
+                      appendTo={() => document.body}
                       delay={[0, 800]}
                       offset={[14, 10]}
+                      visible={show}
+                      onClickOutside={handleOnClickOutside}
                       placement="bottom-start"
                       interactive
                       render={(attrs) => (
                         <div tabIndex="-1" {...attrs}>
-                          <div
-                            className={cx("logout")}
-                            onClick={() => handleLogout()}
-                          >
-                            Đăng xuất
+                          <div className={cx("info-search")}>
+                            {loadingValueSearch ? (
+                              <Loading
+                                className={cx("border-loading")}
+                              ></Loading>
+                            ) : posts.length > 0 ? (
+                              posts.slice(0, 6).map((item) => (
+                                <Link key={item.id} to={`/${item.slug}`}>
+                                  <p className={cx("results")}>{item.title}</p>
+                                </Link>
+                              ))
+                            ) : (
+                              <p className={cx("no-results")}>
+                                Không tìm thấy bài viết
+                              </p>
+                            )}
+                            {posts.length > 0 && (
+                              <Link to={`/search/${valueSearch}`}>
+                                <p className={cx("see-all")}>
+                                  Xem tất cả {posts.length} bài viết được tìm
+                                  thấy
+                                </p>
+                              </Link>
+                            )}
                           </div>
                         </div>
                       )}
                     >
-                      <div className={cx("user")}>
-                        <strong>Xin chào,</strong>
-                        <span> {getLastName(userInfo?.displayName)}</span>
+                      <div className={cx("search")}>
+                        <input
+                          onChange={(e) => handleSearchPosts(e)}
+                          onFocus={() =>
+                            valueSearch.length > 0 && setShow(true)
+                          }
+                          type="text"
+                          placeholder="Tìm kiếm..."
+                        />
+                        <FontAwesomeIcon
+                          className={cx("icon")}
+                          icon={faMagnifyingGlass}
+                        ></FontAwesomeIcon>
                       </div>
                     </HeadLessTippy>
-                  </>
-                )}
+                  </div>
+                  {!userInfo ? (
+                    <>
+                      <Link to="/sign-in">
+                        <Button
+                          type="button"
+                          className={cx(
+                            "btn-sign-up",
+                            "bg-color-primary",
+                            "size-btn"
+                          )}
+                        >
+                          Đăng nhập
+                        </Button>
+                      </Link>
+                      <Link to="/sign-in">
+                        <Button
+                          type="button"
+                          className={cx(
+                            "btn-sign-up-mobile",
+                            "bg-color-primary"
+                          )}
+                        >
+                          <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+                        </Button>
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/dashboard">
+                        <Button
+                          type="button"
+                          className={cx(
+                            "btn-sign-dashboard",
+                            "bg-color-primary"
+                          )}
+                        >
+                          Dashboard
+                        </Button>
+                      </Link>
+                      <HeadLessTippy
+                        delay={[0, 800]}
+                        offset={[14, 10]}
+                        placement="bottom-start"
+                        interactive
+                        render={(attrs) => (
+                          <div tabIndex="-1" {...attrs}>
+                            <div
+                              className={cx("logout")}
+                              onClick={() => handleLogout()}
+                            >
+                              Đăng xuất
+                            </div>
+                          </div>
+                        )}
+                      >
+                        <div className={cx("user")}>
+                          <strong>Xin chào,</strong>
+                          <span> {getLastName(userInfo?.displayName)}</span>
+                        </div>
+                      </HeadLessTippy>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
+
       <header className={cx("header-cate")} ref={refSticky}>
         <div
           style={{
