@@ -1,6 +1,6 @@
 .wrap-all-menu {
   width: 100%;
-  height: 1200px;
+  height: 100vh;
   background-color: #f7f7f7;
   z-index: 999999999;
   position: fixed;
@@ -71,8 +71,8 @@
 
 .content {
   display: flex;
-  max-height: 500px;
   padding: 15px 0;
+  max-height: 550px;
   width: 100%;
   flex-wrap: wrap;
   overflow-y: auto;
