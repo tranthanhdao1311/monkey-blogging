@@ -44,7 +44,6 @@ const SignInPage = () => {
   } = useForm({ mode: "onSubmit", resolver: yupResolver(schema) });
 
   const handleSignIn = async (values) => {
-    console.log(values);
     if (!isValid) return;
     await signInWithEmailAndPassword(auth, values.email, values.password);
     navigate("/");
