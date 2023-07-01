@@ -105,10 +105,17 @@ const Header = () => {
   const [showAllCate, setShowAllCate] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(true);
 
+  useEffect(() => {
+    if (showAllCate) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [showAllCate]);
+
   const handleShowAll = () => {
     setShowAllCate((prev) => !prev);
     setShowSubMenu(true);
-    document.body.style.overflow = "hidden";
   };
 
   const handleClickParentCate = (item) => {
