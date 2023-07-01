@@ -108,6 +108,7 @@ const Header = () => {
   const handleShowAll = () => {
     setShowAllCate((prev) => !prev);
     setShowSubMenu(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleClickParentCate = (item) => {
